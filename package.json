@@ -39,22 +39,28 @@
   "devDependencies": {
     "@ava/typescript": "^5.0.0",
     "@tsconfig/node20": "^20.1.4",
+    "@types/node": "^20.17.16",
+    "@types/sinon": "^17.0.3",
     "ava": "^6.2.0",
     "husky": "^9.1.7",
     "prettier": "^3.4.2",
     "pretty-quick": "^4.0.0",
     "rimraf": "^6.0.1",
+    "sinon": "^19.0.2",
     "typescript": "^5.7.3"
   },
   "ava": {
     "files": [
       "src/**/*.test.ts"
     ],
-		"typescript": {
-			"rewritePaths": {
-				"src/": "dist/esm/"
-			},
-			"compile": false
-		}
-	}
+    "typescript": {
+      "rewritePaths": {
+        "src/": "dist/esm/"
+      },
+      "compile": false
+    }
+  },
+  "dependencies": {
+    "ts-pattern": "^5.6.2"
+  }
 }

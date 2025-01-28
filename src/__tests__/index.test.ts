@@ -1,5 +1,5 @@
-import test from 'ava';
+import test from "ava";
 
-test('noop', t => {
+test("noop", (t) => {
   t.pass();
 });
