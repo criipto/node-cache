@@ -1,0 +1,60 @@
+{
+  "name": "@criipto/cache",
+  "version": "1.0.0",
+  "description": "Cache implementations for Node.js/TypeScript",
+  "main": "./dist/cjs/index.js",
+  "module": "./dist/esm/index.mjs",
+  "types": "./dist/types/index.d.ts",
+  "exports": {
+    ".": {
+      "require": "./dist/cjs/index.js",
+      "import": "./dist/esm/index.mjs"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "test": "npm run build && ava",
+    "check": "tsc --noEmit",
+    "build:cjs": "tsc -p tsconfig.cjs.json",
+    "build:esm": "tsc -p tsconfig.esm.json",
+    "build": "npm run build:cjs && npm run build:esm",
+    "clean": "rimraf dist",
+    "prepublishOnly": "npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/criipto/node-cache.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/criipto/node-cache/issues"
+  },
+  "homepage": "https://github.com/criipto/node-cache#readme",
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "devDependencies": {
+    "@ava/typescript": "^5.0.0",
+    "@tsconfig/node20": "^20.1.4",
+    "ava": "^6.2.0",
+    "husky": "^9.1.7",
+    "prettier": "^3.4.2",
+    "pretty-quick": "^4.0.0",
+    "rimraf": "^6.0.1",
+    "typescript": "^5.7.3"
+  },
+  "ava": {
+    "files": [
+      "src/**/*.test.ts"
+    ],
+		"typescript": {
+			"rewritePaths": {
+				"src/": "dist/esm/"
+			},
+			"compile": false
+		}
+	}
+}
