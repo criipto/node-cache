@@ -1,0 +1,2 @@
+npm run pretty-quick -- --staged
+npm run check
