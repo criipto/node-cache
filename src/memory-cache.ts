@@ -19,7 +19,7 @@ function unwrap<TData>(r: UpdateResult<TData>): TData {
     .exhaustive();
 }
 
-type CacheOptions<TData, TArgs extends unknown[]> = {
+export type CacheOptions<TData, TArgs extends unknown[]> = {
   updatePolicy: (
     cachedValue: TData,
     metadata: { lastUpdatedAt: Date }
