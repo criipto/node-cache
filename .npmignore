@@ -1,3 +1,4 @@
+dist/cjs/__tests__
 dist/**/__tests__
 dist/**/__tests__/**
 dist/**/__tests__/*
