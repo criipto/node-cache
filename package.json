@@ -1,6 +1,6 @@
 {
   "name": "@criipto/cache",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Cache implementations for Node.js/TypeScript",
   "main": "./dist/cjs/index.js",
   "module": "./dist/esm/index.mjs",
