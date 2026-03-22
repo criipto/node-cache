@@ -52,9 +52,13 @@ type CacheItem<TData> =
       state: "failed";
     };
 
+export interface MemoryCache<TData, TArgs extends unknown[]> {
+  (...args: TArgs): Promise<TData>
+}
+
 export function memoryCache<TData, TArgs extends unknown[]>(
   options: CacheOptions<TData, TArgs>
-): (...args: TArgs) => Promise<TData> {
+): MemoryCache<TData, TArgs> {
   const { refresh, updatePolicy, pendingPolicy } = options;
 
   const cache = new Map<string, CacheItem<TData>>();
