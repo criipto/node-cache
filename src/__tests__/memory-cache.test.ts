@@ -26,6 +26,25 @@ test("cache - sequential - (updatePolicy = DONT_UPDATE) it calls refresh on the 
   t.is(fn.callCount, 1);
 });
 
+test("cache.get - sequential - (updatePolicy = DONT_UPDATE) it calls refresh on the first invocation", async (t) => {
+  // ARRANGE
+  const expected = `my_return_val_${Math.random().toString()}`;
+  const fn = sinon.stub().returns(Promise.resolve(expected));
+
+  const cachedFn = memoryCache({
+    updatePolicy: () => CacheUpdatePolicy.DONT_UPDATE,
+    pendingPolicy: () => CachePendingPolicy.WAIT,
+    refresh: fn,
+  });
+
+  // ACT
+  const actual = await cachedFn.get();
+
+  // ASSERT
+  t.is(actual, expected);
+  t.is(fn.callCount, 1);
+});
+
 test("cache - sequential - (updatePolicy = UPDATE) it calls refresh on the first invocation", async (t) => {
   // ARRANGE
   const expected = `my_return_val_${Math.random().toString()}`;

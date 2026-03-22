@@ -53,7 +53,8 @@ type CacheItem<TData> =
     };
 
 export interface MemoryCache<TData, TArgs extends unknown[]> {
-  (...args: TArgs): Promise<TData>
+  (...args: TArgs): Promise<TData>,
+  get: (...args: TArgs) => Promise<TData>
 }
 
 export function memoryCache<TData, TArgs extends unknown[]>(
@@ -63,7 +64,7 @@ export function memoryCache<TData, TArgs extends unknown[]>(
 
   const cache = new Map<string, CacheItem<TData>>();
 
-  return (...args: TArgs): Promise<TData> => {
+  const main = (...args: TArgs): Promise<TData> => {
     const key = JSON.stringify(args);
 
     /** Updates the cache while and after the value is being refreshed */
@@ -142,4 +143,7 @@ export function memoryCache<TData, TArgs extends unknown[]>(
       })
       .exhaustive();
   };
+  main.get = main;
+
+  return main;
 }
